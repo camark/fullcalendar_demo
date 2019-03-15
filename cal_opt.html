@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>演示：FullCalendar应用——增删改数据操作</title>
+    <title>日程安排</title>
     <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0">
-    <meta name="keywords" content="日程安排,FullCalendar,日历,JSON,jquery实例">
-    <meta name="description" content="在线演示FullCalendar新建、修改和删除日程事件的示例。">
+    <meta name="keywords" content="日程安排">
+    <meta name="description" content="日程安排">
     <!-- <link rel="stylesheet" type="text/css" href="http://www.helloweba.com/demo/css/main.css"> -->
     <link rel="stylesheet" type="text/css" href="css/fullcalendar.css">
     <link rel="stylesheet" type="text/css" href="css/fancybox.css"> 
@@ -152,7 +152,6 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-
                 right: 'month,agendaWeek,agendaDay'
             },
             firstDay:0,
@@ -160,29 +159,11 @@
             	fixed:6,
             },
             aspectRatio:1.2,
-            events: [{
-                title: 'All Day Event',
-                start: '2016-09-01',
-                end: '2016-09-05',
-                color:'#2B9F71'
-            },{
-                title: 'All Day Event',
-                start: '2016-09-04',
-                end: '2016-09-05',
-                color:'#3589BD'
-            }, {
-                title: 'Long Event',
-                start: '2016-09-07',
-                end: '2016-09-10',
-                //constraint: 'availableForMeeting', // defined below
-                color: '#F39E05'
-            }, {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2016-09-28',
-                end: '2016-09-30',
-                color:'#EB674D'
-            }],
+            eventLimit: false,
+            events:  {
+                url:'getNotepad.php',
+                cache: false
+            },
             dayClick: function(date, allDay, jsEvent, view) {
                 var selDate = $.fullCalendar.formatDate(date, 'yyyy-MM-dd');
 
@@ -191,6 +172,16 @@
                      'type': 'ajax',
                      'href': 'event.php?action=add&date=' + selDate
                 });
+            },
+            eventClick:function (calEvent, jsEvent, view) {
+                var fstart  = $.fullCalendar.formatDate(calEvent.start, "yyyy/MM/dd HH:mm");
+                var fend  = $.fullCalendar.formatDate(calEvent.end, "HH:mm");
+                //var schdata = {sid:calEvent.sid, deleted:1, uid:event.uid};
+
+                alert(calEvent.title);
+            },
+            select:function( start, end, jsEvent, view){
+                alert(view.name);
             }
         });
     });
@@ -198,20 +189,14 @@
 </head>
 
 <body>
-<!--     <div id="header">
-        <div id="logo">
-            <h1><a href="http://www.helloweba.com" title="返回helloweba首页">helloweba</a></h1></div>
-    </div> -->
+<
     <div id="main" style="width:100%;">
-        <!-- <h2 class="top_title"><a href="http://www.helloweba.com/view-blog-233.html">FullCalendar应用——增删改数据操作</a></h2> -->
+
         <div id='calendar'></div>
     </div>
-<!--     <div id="footer">
-        <p>Powered by helloweba.com 允许转载、修改和使用本站的DEMO，但请注明出处：<a href="http://www.helloweba.com">www.helloweba.com</a></p>
+    <div id="footer">
+
     </div>
-    <p id="stat">
-        <script type="text/javascript" src="/js/tongji.js"></script>
-    </p> -->
 </body>
 
 </html>

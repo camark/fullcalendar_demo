@@ -45,7 +45,7 @@ $date = $_GET['date'];
     </select>
     </span>
     </p>
-    <p id="p_endtime" style="display:none">结束时间：<input type="text" class="input datepicker" name="enddate" id="enddate" value="<?php echo $date;?>">
+    <p id="p_endtime" style="">结束时间：<input type="text" class="input datepicker" name="enddate" id="enddate" value="<?php echo $date;?>">
     <span id="sel_end" style="display:none"><select name="e_hour">
     	<option value="00">00</option>
     	<option value="01">01</option>
@@ -101,14 +101,14 @@ $(function(){
 		}
 	});
 	
-	$("#isend").click(function(){
+	/*$("#isend").click(function(){
 		if($("#p_endtime").css("display")=="none"){
 			$("#p_endtime").show();
 		}else{
 			$("#p_endtime").hide();
 		}
 		$.fancybox.resize();//调整高度自适应
-	});
+	});*/
 	
 	//提交表单
 	$('#add_form').ajaxForm({

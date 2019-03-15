@@ -4,7 +4,7 @@ include_once('connect.php');//连接数据库
 $action = $_POST['action'];
 if($action=='add'){
 	$events = stripslashes(trim($_POST['event']));//事件内容
-	$events=mysqli_real_escape_string(strip_tags($events),$link); //过滤HTML标签，并转义特殊字符
+	$events=mysqli_real_escape_string($link,strip_tags($events)); //过滤HTML标签，并转义特殊字符
 
 	$isallday = $_POST['isallday'];//是否是全天事件
 	$isend = $_POST['isend'];//是否有结束时间
@@ -32,8 +32,8 @@ if($action=='add'){
 	$color = $colors[$key];
 
 	$isallday = $isallday?1:0;
-	$query = mysqli_query("insert into `calendar` (`title`,`starttime`,`endtime`,`allday`,`color`) values ('$events','$starttime','$endtime','$isallday','$color')");
-	if(mysqli_insert_id()>0){
+	$query = mysqli_query($link,"insert into `calendar` (`title`,`starttime`,`endtime`,`allday`,`color`) values ('$events','$starttime','$endtime','$isallday','$color')");
+	if(mysqli_insert_id($link)>0){
 		echo '1';
 	}else{
 		echo '写入失败！';
