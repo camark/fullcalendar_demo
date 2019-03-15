@@ -9,7 +9,7 @@
     <meta name="description" content="在线演示FullCalendar新建、修改和删除日程事件的示例。">
     <!-- <link rel="stylesheet" type="text/css" href="http://www.helloweba.com/demo/css/main.css"> -->
     <link rel="stylesheet" type="text/css" href="css/fullcalendar.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/fancybox.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/fancybox.css"> 
     <style type="text/css">
     html{
     	width:100%;
@@ -143,9 +143,9 @@
     }
     </style>
     <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
-    <!-- <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script> -->
+    <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script> 
     <script src='js/fullcalendar.min.js'></script>
-    <!-- <script src='js/jquery.fancybox-1.3.1.pack.js'></script> -->
+    <script src='js/jquery.fancybox-1.3.1.pack.js'></script> 
     <script type="text/javascript">
     $(function() {
         $('#calendar').fullCalendar({
@@ -153,7 +153,7 @@
                 left: 'prev,next today',
                 center: 'title',
 
-                right: ''//'month,agendaWeek,agendaDay'
+                right: 'month,agendaWeek,agendaDay'
             },
             firstDay:0,
             weekMode:{
@@ -186,11 +186,11 @@
             dayClick: function(date, allDay, jsEvent, view) {
                 var selDate = $.fullCalendar.formatDate(date, 'yyyy-MM-dd');
 
-                console.info(selDate);
-                // $.fancybox({
-                //     'type': 'ajax',
-                //     'href': 'event.php?action=add&date=' + selDate
-                // });
+                //console.info(selDate);
+                $.fancybox({
+                     'type': 'ajax',
+                     'href': 'event.php?action=add&date=' + selDate
+                });
             }
         });
     });
