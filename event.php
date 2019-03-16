@@ -3,6 +3,19 @@ $action = $_GET['action'];
 $date = $_GET['date'];
 ?>
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<style>
+    .ui-datepicker-header {
+        height: 30px;
+        color: #333;
+        background: #1badda;
+    }
+
+    .ui-datepicker-div{
+        width: 300px;
+    }
+
+    .ui-datepicker { width: 17em; padding: .2em .2em 0; z-index: 9999 !important; }
+</style>
 <div class="fancy">
 	<h3>新建事件</h3>
     <form id="add_form" action="do.php" method="post">

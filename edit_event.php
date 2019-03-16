@@ -41,6 +41,14 @@
         }
     ?>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+        <style>
+            .ui-datepicker { width: 17em; padding: .2em .2em 0; z-index: 9999 !important; }
+            .ui-datepicker-header {
+                height: 30px;
+                color: #333;
+                background: #1badda;
+            }
+        </style>
     <div class="fancy">
         <h3>编辑事件</h3>
         <form id="edit_form" action="do.php" method="post">

@@ -6,8 +6,8 @@ if($action=='add'){
 	$events = stripslashes(trim($_POST['event']));//事件内容
 	$events=mysqli_real_escape_string($link,strip_tags($events)); //过滤HTML标签，并转义特殊字符
 
-	$isallday = $_POST['isallday'];//是否是全天事件
-	$isend = $_POST['isend'];//是否有结束时间
+	$isallday = isset($_POST['isallday'])?1:0;//是否是全天事件
+	$isend = isset($_POST['isend'])?1:0;//是否有结束时间
 
 	$startdate = trim($_POST['startdate']);//开始日期
 	$enddate = trim($_POST['enddate']);//结束日期
@@ -18,7 +18,7 @@ if($action=='add'){
 	if($isallday==1 && $isend==1){
 		$starttime = strtotime($startdate);
 		$endtime = strtotime($enddate);
-	}elseif($isallday==1 && $isend==""){
+	}elseif($isallday==1 && $isend==0){
 		$starttime = strtotime($startdate);
 	}elseif($isallday=="" && $isend==1){
 		$starttime = strtotime($startdate.' '.$s_time);
@@ -31,7 +31,7 @@ if($action=='add'){
 	$key = array_rand($colors);
 	$color = $colors[$key];
 
-	$isallday = $isallday?1:0;
+	//$isallday = $isallday?1:0;
 	$query = mysqli_query($link,"insert into `calendar` (`title`,`starttime`,`endtime`,`allday`,`color`) values ('$events','$starttime','$endtime','$isallday','$color')");
 	if(mysqli_insert_id($link)>0){
 		echo '1';
@@ -48,8 +48,8 @@ if ($action=="edit"){
     $events = stripslashes(trim($_POST['event']));//事件内容
     $events=mysqli_real_escape_string($link,strip_tags($events)); //过滤HTML标签，并转义特殊字符
 
-    $isallday = $_POST['isallday'];//是否是全天事件
-    $isend = $_POST['isend'];//是否有结束时间
+    $isallday = isset($_POST['isallday'])?1:0;//是否是全天事件
+    $isend = isset($_POST['isend'])?1:0;//是否有结束时间
 
     $startdate = trim($_POST['startdate']);//开始日期
     $enddate = trim($_POST['enddate']);//结束日期
