@@ -86,7 +86,7 @@ $date = $_GET['date'];
     <label><input type="checkbox" value="1" id="isallday" name="isallday" checked> 全天</label>
     <label><input type="checkbox" value="1" id="isend" name="isend"> 结束时间</label>
     </p>
-    <div class="sub_btn"><span class="del"><input type="button" class="btn btn_del" id="del_event" value="删除"></span><input type="submit" class="btn btn_ok" value="确定"> <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()"></div>
+    <div class="sub_btn"><input type="submit" class="btn btn_ok" value="确定"> <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()"></div>
     </form>
 </div>
 <script type="text/javascript" src="js/jquery.form.min.js"></script>

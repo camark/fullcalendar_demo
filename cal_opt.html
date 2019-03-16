@@ -178,7 +178,11 @@
                 var fend  = $.fullCalendar.formatDate(calEvent.end, "HH:mm");
                 //var schdata = {sid:calEvent.sid, deleted:1, uid:event.uid};
 
-                alert(calEvent.title);
+                //alert(calEvent.title);
+                $.fancybox({
+                    'type':'ajax',
+                    'href':'edit_event.php?action=edit&id='+calEvent.id
+                });
             },
             select:function( start, end, jsEvent, view){
                 alert(view.name);
