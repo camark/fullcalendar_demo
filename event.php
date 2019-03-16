@@ -105,7 +105,12 @@ $date = $_GET['date'];
 <!--<script type="text/javascript" src="js/jquery.form.min.js"></script>-->
 <script type="text/javascript">
 $(function(){
-	$(".datepicker").datepicker();
+	//$(".datepicker").datepicker("option", "dateFormat", "yy-mm-dd");
+    $( ".datepicker" ).datepicker({
+        dateFormat:"yy-mm-dd",
+        monthNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']//月份格式
+        }
+    );
 	$("#isallday").click(function(){
 		if($("#sel_start").css("display")=="none"){
 			$("#sel_start,#sel_end").show();
