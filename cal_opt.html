@@ -19,7 +19,7 @@
     	margin:0px;
     }
     #calendar {
-        width:100%;
+        width:80%;
         margin: 20px auto 10px auto
     }
     
@@ -116,12 +116,12 @@
     }
 
     th.fc-day-header{
-    	    color: #9C9C9C;
-    font-weight: 100;
-    font-size: 12px;
-    height:30px;
+    	color: #9C9C9C;
+        font-weight: 100;
+        font-size: 12px;
+        height:30px;
         border-bottom: 1px solid #CCCBCB;
-            vertical-align: inherit;
+        vertical-align: inherit;
     }
     td.fc-day.fc-mon.fc-widget-content.fc-today.fc-state-highlight > div{
     	/*display: -webkit-box;*/
@@ -143,9 +143,11 @@
     }
     </style>
     <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
-    <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script> 
+    <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
+
     <script src='js/fullcalendar.min.js'></script>
-    <script src='js/jquery.fancybox-1.3.1.pack.js'></script> 
+    <script src='js/jquery.fancybox-1.3.1.pack.js'></script>
+    <script type="text/javascript" src="js/jquery.form.min.js"></script>
     <script type="text/javascript">
     $(function() {
         $('#calendar').fullCalendar({
@@ -154,6 +156,7 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
+            height:900,
             firstDay:0,
             weekMode:{
             	fixed:6,
@@ -188,6 +191,10 @@
                 alert(view.name);
             }
         });
+
+        //星期六星期天高亮
+        $(".fc-sat").css('backgroundColor','#c4e1ff');//这个是周六的TD
+        $(".fc-sun").css('backgroundColor','#c4e1ff');//这个是周日的TD
     });
     </script>
 </head>

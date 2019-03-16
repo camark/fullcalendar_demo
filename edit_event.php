@@ -43,12 +43,12 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <div class="fancy">
         <h3>编辑事件</h3>
-        <form id="edit_form" action="do.php?action=edit" method="post">
+        <form id="edit_form" action="do.php" method="post">
             <input type="hidden" name="id" id="eventid" value="<?php echo $id; ?>">
+            <input type="hidden" name="action" value="edit">
             <p>日程内容：<input type="text" class="input" name="event" id="event" style="width:320px"
                            placeholder="记录你将要做的一件事..." value="<?php echo $title; ?>"></p>
-            <p>开始时间：<input type="text" class="input datepicker" name="startdate"
-                           id="startdate" value="<?php echo $start_d; ?>" readonly>
+            <p>开始时间：<input type="text" class="input datepicker" name="startdate" id="startdate" value="<?php echo $start_d; ?>" readonly>
                 <span id="sel_start" <?php echo $display; ?>><select name="s_hour">
         <option value="<?php echo $start_h; ?>" selected><?php echo $start_h; ?></option>
         <option value="00">00</option>
@@ -113,10 +113,8 @@
     </div>
 <?php } ?>
 
-<script type="text/javascript" src="js/jquery.form.min.js"></script>
+
 <script type="text/javascript">
-
-
     $(function () {
         $(".datepicker").datepicker({minDate: -3, maxDate: 3});
         $("#isallday").click(function () {
@@ -136,7 +134,7 @@
             $.fancybox.resize();//调整高度自适应
         });
 
-//提交表单
+        //提交表单
         $('#edit_form').ajaxForm({
             beforeSubmit: showRequest, //表单验证
             success: showResponse //成功返回
@@ -145,14 +143,20 @@
         $("#del_event").click(function(){
             if(confirm("您确定要删除吗？")){
                 var eventid = $("#eventid").val();
-                $.post("do.php?action=del",{id:eventid},function(msg){
-                    if(msg==1){//删除成功
-                        $.fancybox.close();
-                        $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据
-                    }else{
-                        alert(msg);
-                    }
-                });
+                $.ajax({
+                    url:"do.php",
+                    method:'post',
+                    data:{action:"del",id:eventid},
+                    success:function(msg){
+                        //alert(msg);
+                        if(msg==1){//删除成功
+                            $.fancybox.close();
+                            $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据
+                        }else{
+                            alert(msg);
+                        }
+                    }}
+                );
             }
         });
 

@@ -9,7 +9,7 @@ $date = $_GET['date'];
     <input type="hidden" name="action" value="add">
     <p>日程内容：<input type="text" class="input" name="event" id="event" style="width:320px" placeholder="记录你将要做的一件事..."></p>
     <p>开始时间：<input type="text" class="input datepicker" name="startdate" id="startdate" value="<?php echo $date;?>">
-    <span id="sel_start" style="display:none"><select name="s_hour">
+    <span id="sel_start" style="display: none"><select name="s_hour">
     	<option value="00">00</option>
         <option value="01">01</option>
         <option value="02">02</option>
@@ -89,7 +89,7 @@ $date = $_GET['date'];
     <div class="sub_btn"><input type="submit" class="btn btn_ok" value="确定"> <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()"></div>
     </form>
 </div>
-<script type="text/javascript" src="js/jquery.form.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery.form.min.js"></script>-->
 <script type="text/javascript">
 $(function(){
 	$(".datepicker").datepicker();

@@ -39,7 +39,7 @@ if($action=='add'){
 		echo '写入失败！';
 	}
 }
-elseif ($action=="edit"){
+if ($action=="edit"){
     $id = intval($_POST['id']);
     if($id==0){
         echo '事件不存在！';
@@ -74,14 +74,17 @@ elseif ($action=="edit"){
     $isallday = $isallday?1:0;
     mysqli_query($link,"update `calendar` set `title`='$events',`starttime`='$starttime',`endtime`='$endtime',`allday`='$isallday' where `id`='$id'");
 
-    echo "go";
+    //echo "go";
     if(mysqli_affected_rows($link)==1){
         echo '1';
     }else{
         echo '出错了！';
     }
-}elseif ($action=="delete"){
+}
+if ($action=="del"){
     $id = intval($_POST['id']);
+    header("Content-Type: text/html; charset=utf-8");
+    //echo "Delete";
     if($id>0){
         mysqli_query($link,"delete from `calendar` where `id`='$id'");
         if(mysqli_affected_rows($link)==1){
