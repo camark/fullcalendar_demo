@@ -166,9 +166,37 @@
             },
             aspectRatio:1.2,
             eventLimit: false,
-            events:  {
+            events:  /*{
                 url:'getNotepad.php',
                 cache: false
+            },*/
+            function (start,end,callback) {
+                var events=[];
+
+                $.ajax({
+                        url:'getNotepad.php',
+                        method:'get',
+                        datatype:'json',
+                        success:function(data){
+                            $.each(data,function(key,value){
+                                events.push(
+                                    {
+                                        id:value.id,
+                                        title:value.title,
+                                        start:value.start,
+                                        end:value.end,
+                                        allday:value.allday=='0',
+                                        color:value.color
+                                    }
+                                )
+                            }),
+                                callback(events)
+                        },
+                        error:function(data){
+                            alert(data);
+                        }
+                    }
+                )
             },
             dayClick: function(date, allDay, jsEvent, view) {
                 var selDate = $.fullCalendar.formatDate(date, 'yyyy-MM-dd');
