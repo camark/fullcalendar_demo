@@ -7,7 +7,7 @@ if($action=='add'){
 	$events=mysqli_real_escape_string($link,strip_tags($events)); //过滤HTML标签，并转义特殊字符
 
 	$isallday = isset($_POST['isallday'])?1:0;//是否是全天事件
-	$isend = isset($_POST['isend'])?1:0;//是否有结束时间
+	$isend = 1;
 
 	$startdate = trim($_POST['startdate']);//开始日期
 	$enddate = trim($_POST['enddate']);//结束日期
@@ -15,17 +15,13 @@ if($action=='add'){
 	$s_time = $_POST['s_hour'].':'.$_POST['s_minute'].':00';//开始时间
 	$e_time = $_POST['e_hour'].':'.$_POST['e_minute'].':00';//结束时间
 
-	if($isallday==1 && $isend==1){
-		$starttime = strtotime($startdate);
-		$endtime = strtotime($enddate);
-	}elseif($isallday==1 && $isend==0){
-		$starttime = strtotime($startdate);
-	}elseif($isallday=="" && $isend==1){
-		$starttime = strtotime($startdate.' '.$s_time);
-		$endtime = strtotime($enddate.' '.$e_time);
-	}else{
-		$starttime = strtotime($startdate.' '.$s_time);
-	}
+	if($isallday==1) {
+        $starttime = strtotime($startdate);
+        $endtime = strtotime($enddate);
+	}else {
+        $starttime = strtotime($startdate . ' ' . $s_time);
+        $endtime = strtotime($enddate . ' ' . $e_time);
+    }
 
 	$colors = array("#360","#f30","#06c");
 	$key = array_rand($colors);
@@ -49,7 +45,7 @@ if ($action=="edit"){
     $events=mysqli_real_escape_string($link,strip_tags($events)); //过滤HTML标签，并转义特殊字符
 
     $isallday = isset($_POST['isallday'])?1:0;//是否是全天事件
-    $isend = isset($_POST['isend'])?1:0;//是否有结束时间
+    $isend = 1;//是否有结束时间
 
     $startdate = trim($_POST['startdate']);//开始日期
     $enddate = trim($_POST['enddate']);//结束日期
@@ -57,18 +53,12 @@ if ($action=="edit"){
     $s_time = $_POST['s_hour'].':'.$_POST['s_minute'].':00';//开始时间
     $e_time = $_POST['e_hour'].':'.$_POST['e_minute'].':00';//结束时间
 
-    if($isallday==1 && $isend==1){
+    if($isallday==1) {
         $starttime = strtotime($startdate);
         $endtime = strtotime($enddate);
-    }elseif($isallday==1 && $isend==""){
-        $starttime = strtotime($startdate);
-        $endtime = 0;
-    }elseif($isallday=="" && $isend==1){
-        $starttime = strtotime($startdate.' '.$s_time);
-        $endtime = strtotime($enddate.' '.$e_time);
-    }else{
-        $starttime = strtotime($startdate.' '.$s_time);
-        $endtime = 0;
+    }else {
+        $starttime = strtotime($startdate . ' ' . $s_time);
+        $endtime = strtotime($enddate . ' ' . $e_time);
     }
 
     $isallday = $isallday?1:0;

@@ -22,7 +22,7 @@ $date = $_GET['date'];
     <input type="hidden" name="action" value="add">
     <p>日程内容：<input type="text" class="input" name="event" id="event" style="width:320px" placeholder="记录你将要做的一件事..."></p>
     <p>开始时间：<input type="text" class="input datepicker" name="startdate" id="startdate" value="<?php echo $date;?>">
-    <span id="sel_start" style="display: none"><select name="s_hour">
+    <span id="sel_start" style=""><select name="s_hour">
     	<option value="00">00</option>
         <option value="01">01</option>
         <option value="02">02</option>
@@ -59,7 +59,7 @@ $date = $_GET['date'];
     </span>
     </p>
     <p id="p_endtime" style="">结束时间：<input type="text" class="input datepicker" name="enddate" id="enddate" value="<?php echo $date;?>">
-    <span id="sel_end" style="display:none"><select name="e_hour">
+    <span id="sel_end" style=""><select name="e_hour">
     	<option value="00">00</option>
     	<option value="01">01</option>
         <option value="02">02</option>
@@ -96,8 +96,8 @@ $date = $_GET['date'];
     </span>
     </p>
     <p>
-    <label><input type="checkbox" value="1" id="isallday" name="isallday" checked> 全天</label>
-    <label><input type="checkbox" value="1" id="isend" name="isend"> 结束时间</label>
+    <label><input type="checkbox" value="0" id="isallday" name="isallday" unchecked> 全天</label>
+<!--    <label><input type="checkbox" value="1" id="isend" name="isend"> 结束时间</label>-->
     </p>
     <div class="sub_btn"><input type="submit" class="btn btn_ok" value="确定"> <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()"></div>
     </form>
@@ -111,13 +111,13 @@ $(function(){
         monthNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']//月份格式
         }
     );
-	$("#isallday").click(function(){
+	/*$("#isallday").click(function(){
 		if($("#sel_start").css("display")=="none"){
 			$("#sel_start,#sel_end").show();
 		}else{
 			$("#sel_start,#sel_end").hide();
 		}
-	});
+	});*/
 	
 	/*$("#isend").click(function(){
 		if($("#p_endtime").css("display")=="none"){
