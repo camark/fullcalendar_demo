@@ -7,7 +7,7 @@
  */
 include_once "connect.php";
 
-$result=mysqli_query($link,"select id,title,starttime as start,endtime as end,allday,color from calendar");
+$result=mysqli_query($link,"select id,title,starttime as starttime,endtime as endtime,allday,color from calendar");
 $arr = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 header('Content-type: application/json');

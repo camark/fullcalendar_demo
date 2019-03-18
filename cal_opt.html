@@ -130,13 +130,13 @@
 
 
     }
-/*	td.fc-day.fc-mon.fc-widget-content.fc-today.fc-state-highlight .fc-day-number{
+	td.fc-day.fc-mon.fc-widget-content.fc-today.fc-state-highlight .fc-day-number{
 		border-radius:10px;
-		background: red;
+		background: #bce8f1;
 		width:24px;
 		margin-left:-14px;
 	}
-*/
+
     .fc-border-separate th, .fc-border-separate td{
 
     	    border-top: 1px solid #CCCBCB
@@ -160,12 +160,21 @@
                 right: 'month,agendaWeek,agendaDay'
             },
             height:800,
+            displayEventTime:false,
+            displayEventEnd: true,
+            selectHelper:true,
             firstDay:0,
+            businessHours: {
+                dow: [ 1, 2, 3, 4,5 ], // 周一 - 周四
+                start: '8:00', // 上午10点开始
+                end: '18:00', // 下午18点结束
+            },
             weekMode:{
             	fixed:6,
             },
             aspectRatio:1.2,
-            eventLimit: false,
+            eventLimit: true,
+            eventLimitText  : "更多",
             events:  /*{
                 url:'getNotepad.php',
                 cache: false
@@ -183,8 +192,8 @@
                                     {
                                         id:value.id,
                                         title:value.title,
-                                        start:value.start,
-                                        end:value.end,
+                                        start:value.starttime,
+                                        end:value.endtime,
                                         allDay:value.allday=='1',
                                         color:value.color
                                     }
@@ -231,11 +240,10 @@
 </head>
 
 <body>
-<
-    <div id="main" style="width:100%;">
 
-        <div id='calendar'></div>
-    </div>
+
+    <div id='calendar'></div>
+
     <div id="footer">
 
     </div>

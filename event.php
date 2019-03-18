@@ -23,14 +23,6 @@ $date = $_GET['date'];
     <p>日程内容：<input type="text" class="input" name="event" id="event" style="width:320px" placeholder="记录你将要做的一件事..."></p>
     <p>开始时间：<input type="text" class="input datepicker" name="startdate" id="startdate" value="<?php echo $date;?>">
     <span id="sel_start" style=""><select name="s_hour">
-    	<option value="00">00</option>
-        <option value="01">01</option>
-        <option value="02">02</option>
-        <option value="03">03</option>
-        <option value="04">04</option>
-        <option value="05">05</option>
-        <option value="06">06</option>
-        <option value="07">07</option>
         <option value="08" selected>08</option>
         <option value="09">09</option>
         <option value="10">10</option>
@@ -60,14 +52,6 @@ $date = $_GET['date'];
     </p>
     <p id="p_endtime" style="">结束时间：<input type="text" class="input datepicker" name="enddate" id="enddate" value="<?php echo $date;?>">
     <span id="sel_end" style=""><select name="e_hour">
-    	<option value="00">00</option>
-    	<option value="01">01</option>
-        <option value="02">02</option>
-        <option value="03">03</option>
-        <option value="04">04</option>
-        <option value="05">05</option>
-        <option value="06">06</option>
-        <option value="07">07</option>
         <option value="08">08</option>
         <option value="09">09</option>
         <option value="10">10</option>
