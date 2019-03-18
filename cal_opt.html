@@ -142,7 +142,16 @@
     	    border-top: 1px solid #CCCBCB
     }
 
-
+    /*星期六背景色和字体颜色wheat */
+    .fc-sat{
+        /*background: #F5DEB3;*/
+        color:#0000FF;
+    }
+    /*星期天背景色和字体颜色burlywood */
+    .fc-sun{
+        /*background: #DEB887;*/
+        color:#FF0000 ;
+    }
 
     </style>
     <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
@@ -161,7 +170,7 @@
             },
             height:800,
             displayEventTime:false,
-            displayEventEnd: true,
+            displayEventEnd:1,
             selectHelper:true,
             firstDay:0,
             businessHours: {
@@ -233,8 +242,8 @@
         });
 
         //星期六星期天高亮
-        $(".fc-sat").css('backgroundColor','#c4e1ff');//这个是周六的TD
-        $(".fc-sun").css('backgroundColor','#c4e1ff');//这个是周日的TD
+        $(".fc-sat").css('color','#0000FF;');//这个是周六的TD
+        $(".fc-sun").css('color','#FF0000');//这个是周日的TD
     });
     </script>
 </head>
