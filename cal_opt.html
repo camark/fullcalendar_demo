@@ -169,6 +169,14 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
+            customButtons: {
+                myCustomButton: {
+                    text: '自定义按钮',
+                    click: function() {
+                        alert('点击了自定义按钮!');
+                    }
+                }
+            },
             defaultView:'agendaWeek',
             height:800,
             displayEventTime:false,
